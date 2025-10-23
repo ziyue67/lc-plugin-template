@@ -1,21 +1,27 @@
-# LeetCode Plugin Code Template
+# Data Structures and Algorithms
 
-This repository allows you to debug LeetCode algorithm codes locally in **vscode** or **Jetbrains IDE**, currently supports **Java/C++/Python/Golang/JavaScript**.
+本项目为 C++ 实现的数据结构与算法学习工程，适合初学者和进阶者复习、巩固基础知识。
+This project is a C++ practice repository for classic data structures and algorithms, suitable for both beginners and advanced learners.
 
-Detailed configuration methods are available in [Jetbrains LeetCode Plugin Usage Guide](https://labuladong.online/algo/en/intro/jetbrains/) and [vscode LeetCode Plugin Usage Guide](https://labuladong.online/algo/en/intro/vscode/).
+## 主要内容 / Main Content
 
-Welcome to submit Issue/PR to optimize this repository or add new language support.
+- 常见数据结构（如数组、字符串等）的基本操作
+- 算法实现与注释，便于理解和扩展
+- 代码风格清晰，适合自学和教学
 
-# 力扣算法本地调试模板
+## 示例 / Example
 
-本仓库可以让你在本地 **vscode** 或 **Jetbrains IDE** 中调试力扣算法代码，目前支持 **Java/C++/Python/Golang/JavaScript** 等语言。
+## 如何使用 / How to Use
 
-详细的配置方法见 [Jetbrains 刷题插件使用说明](https://labuladong.online/algo/intro/jetbrains/) 和 [vscode 刷题插件使用说明](https://labuladong.online/algo/intro/vscode/)。
+1. 使用 Visual Studio 2026 或兼容的 C++ 开发环境打开本项目。
+2. 编译并运行 `data structures and algorithms.cpp`，可根据注释自行添加测试用例。
+3. 可扩展更多数据结构与算法实现，适合个人练习与面试准备。
 
-欢迎提出 Issue/PR 优化本仓库，或添加新的编程语言支持。
+## 贡献 / Contribution
 
-# Exmaples
+欢迎提交 Pull Request 或 Issue 交流学习心得。
 
-![image](https://github.com/user-attachments/assets/6906ce3f-afd3-4b77-a3cf-cd4ec013fb22)
+---
 
-![image](https://github.com/user-attachments/assets/5864e01f-678b-4f6a-b1e1-3c22f30a2266)
+**项目地址 / Project URL:**
+[https://github.com/ziyue67/data-structures-and-algorithms](https://github.com/ziyue67/data-structures-and-algorithms)
