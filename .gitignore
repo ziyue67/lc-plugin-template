@@ -371,3 +371,5 @@ FodyWeavers.xsd
 !CLAUDE.md
 *.json
 build
+/data structures and algorithms/.vscode
+/data structures and algorithms/output
