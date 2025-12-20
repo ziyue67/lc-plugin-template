@@ -6,3 +6,5 @@
 !README.md
 *.json
 build
+cpp-template/output/9.回文数.exe
+cpp-template/output/141.环形链表.exe
