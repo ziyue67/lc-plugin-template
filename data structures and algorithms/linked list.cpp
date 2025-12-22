@@ -5,7 +5,7 @@ struct Node // 定义链表节点
 {
 	Node(int data = 0) : data(data), next(nullptr) {} // 构造函数，初始化节点值和指针
 	int data;										  // 节点值
-	Node *next;										  // 指向下一个节点的指针
+	Node* next;										  // 指向下一个节点的指针
 };
 class ClinkedList
 {
@@ -26,7 +26,7 @@ public:
 			return;
 		}
 
-		Node *p = head;		 // 定义一个指针指向头节点
+		Node* p = head;		 // 定义一个指针指向头节点
 		while (p != nullptr) // 遍历链表
 		{
 			head = head->next; // 头指针指向下一个节点
@@ -43,26 +43,26 @@ public:
 	 */
 	void insertTail(int val)
 	{ // 链表尾插入 O(n)
-		Node *p = head;
+		Node* p = head;
 		// 遍历链表直到找到最后一个节点
 		while (p->next != nullptr)
 		{
 			p = p->next; // 指针后移
 		}
 		// 创建新节点并将其链接到链表末尾
-		Node *node = new Node(val); // 创建新节点
+		Node* node = new Node(val); // 创建新节点
 		p->next = node;				// 将新节点链接到链表末尾
 	}
 	void insertHead(int val)
 	{								// 链表头插入 O(1)
-		Node *node = new Node(val); // 创建新 节点
+		Node* node = new Node(val); // 创建新 节点
 		node->next = head->next;	// 新节点指向原头节点的下一个节点
 		head->next = node;			// 头节点指向新节点
 	}
 	void Remove(int val)
 	{
-		Node *q = head;		  // 前驱节点
-		Node *p = head->next; // 从头节点的下一个节点开始遍历
+		Node* q = head;		  // 前驱节点
+		Node* p = head->next; // 从头节点的下一个节点开始遍历
 		while (p != nullptr)  // 遍历链表
 		{
 			if (p->data == val) // 找到要删除的节点
@@ -80,8 +80,8 @@ public:
 	}
 	void RemoveAll(int val)
 	{
-		Node *q = head;
-		Node *p = head->next;
+		Node* q = head;
+		Node* p = head->next;
 		while (p != nullptr)
 		{
 			if (p->data == val)
@@ -100,8 +100,8 @@ public:
 	}
 	void reverseList()
 	{
-		Node *head = this->head;
-		Node *p = head->next;
+		Node* head = this->head;
+		Node* p = head->next;
 		while (p == nullptr)
 		{
 			return;
@@ -109,7 +109,7 @@ public:
 		head->next = nullptr;
 		while (p != nullptr)
 		{
-			Node *q = p->next;
+			Node* q = p->next;
 			p->next = head->next;
 			head->next = p;
 			p = q;
@@ -119,7 +119,7 @@ public:
 	// 搜索 函数，查找链表中是否存在值为 val 的节点 O(n)
 	bool find(int val)
 	{
-		Node *p = head->next; // 从头节点的下一个节点开始遍历
+		Node* p = head->next; // 从头节点的下一个节点开始遍历
 		while (p != nullptr)  // 遍历链表
 		{
 			if (p->data == val) // 找到节点
@@ -134,7 +134,7 @@ public:
 	// 打印链表中的所有节点值
 	void show()
 	{
-		Node *p = head->next; // 从头节点的下一个节点开始遍历
+		Node* p = head->next; // 从头节点的下一个节点开始遍历
 		while (p != nullptr)
 		{
 			cout << p->data << " "; // 输出节点值
@@ -142,24 +142,26 @@ public:
 		}
 		cout << endl;
 	}
-	Node *getHead() const { return head; }
-	void setHead(Node *newHead) { head = newHead; }
-
+	Node* getHead() const { return head; }
+	void setHead(Node* newHead) { head = newHead; }
+	friend void mergeList(ClinkedList& list1, ClinkedList& list2);
+	friend void mergeList1(ClinkedList& list1, ClinkedList& list2);
+	friend void reverseList(ClinkedList& list);
+	friend bool linkedList(ClinkedList& list, int k, int& val);
+	friend bool IsLinkHasCircle(ClinkedList& list, int& val);
+	friend bool IsLinkHasCircle(Node* head, int& val);
+	friend Node* IntersectionNode(Node* head1, Node* head2, int& val);
+	friend bool IntersectionNode1(Node* head1, Node* head2, int& val);
 private:
 	// 链表头节点指针
-	Node *head;
-	friend void mergeList(ClinkedList &list1, ClinkedList &list2);
-	friend void mergeList1(ClinkedList &list1, ClinkedList &list2);
-	friend void reverseList(ClinkedList &list);
-	friend bool linkedList(ClinkedList &list, int k, int &val);
-	friend bool IsLinkHasCircle(ClinkedList &list, int &val);
-	friend bool IsLinkHasCircle(Node *head, int &val);
+	Node* head;
+	
 };
 // 单链表逆序
-void reverseList(ClinkedList &list)
+void reverseList(ClinkedList& list)
 {
-	Node *head = list.head; // 获取链表头节点指针
-	Node *p = head->next;	// 定义一个指针指向头节点的下一个节点
+	Node* head = list.head; // 获取链表头节点指针
+	Node* p = head->next;	// 定义一个指针指向头节点的下一个节点
 	while (p == nullptr)	// 遍历链表
 	{
 		return; // 链表为空，直接返回
@@ -167,7 +169,7 @@ void reverseList(ClinkedList &list)
 	head->next = nullptr; // 将头节点的下一个节点置空
 	while (p != nullptr)  // 遍历链表
 	{
-		Node *q = p->next;	  // 定义一个指针指向当前节点的下一个节点
+		Node* q = p->next;	  // 定义一个指针指向当前节点的下一个节点
 		p->next = head->next; // 将当前节点的下一个节点指向头节点的下一个节点
 		head->next = p;		  // 将头节点的下一个节点指向当前节点
 
@@ -175,11 +177,11 @@ void reverseList(ClinkedList &list)
 	}
 }
 // 查找链表中倒数第k个节点
-bool linkedList(ClinkedList &list, int k, int &val)
+bool linkedList(ClinkedList& list, int k, int& val)
 {
-	Node *head = list.head;
-	Node *per = head;
-	Node *p = head;
+	Node* head = list.head;
+	Node* per = head;
+	Node* p = head;
 
 	if (k <= 0)
 		return false;
@@ -202,11 +204,11 @@ bool linkedList(ClinkedList &list, int k, int &val)
 	return true;	 // 返回true表示找到了倒数第k个节点
 }
 // 合并二个有序链表的单链表 从小到大
-void mergeList(ClinkedList &list1, ClinkedList &list2)
+void mergeList(ClinkedList& list1, ClinkedList& list2)
 {
-	Node *p = list1.head->next;
-	Node *q = list2.head->next;
-	Node *last = list1.head;
+	Node* p = list1.head->next;
+	Node* q = list2.head->next;
+	Node* last = list1.head;
 	list2.head->next = nullptr;
 
 	while (p != nullptr && q != nullptr)
@@ -234,7 +236,7 @@ void mergeList(ClinkedList &list1, ClinkedList &list2)
 	}
 }
 // 合并二个有序链表的单链表 从大到小
-void mergeList1(ClinkedList &list1, ClinkedList &list2)
+void mergeList1(ClinkedList& list1, ClinkedList& list2)
 {
 	// Node* p = list1.head->next;
 	// Node* q = list2.head->next;
@@ -262,15 +264,15 @@ void mergeList1(ClinkedList &list1, ClinkedList &list2)
 	// {
 	// 	last->next = q;
 	// }
-	Node *p = list1.head->next;
-	Node *q = list2.head->next;
+	Node* p = list1.head->next;
+	Node* q = list2.head->next;
 
 	list1.head->next = nullptr; // 断开头节点
 	list2.head->next = nullptr; // 断开第二个链表
 
 	while (p != nullptr && q != nullptr)
 	{
-		Node *temp;
+		Node* temp;
 		if (p->data > q->data)
 		{ // 取较大的
 			temp = p;
@@ -290,7 +292,7 @@ void mergeList1(ClinkedList &list1, ClinkedList &list2)
 	// 处理剩余节点
 	while (p != nullptr)
 	{
-		Node *temp = p;
+		Node* temp = p;
 		p = p->next;
 		temp->next = list1.head->next;
 		list1.head->next = temp;
@@ -298,17 +300,17 @@ void mergeList1(ClinkedList &list1, ClinkedList &list2)
 
 	while (q != nullptr)
 	{
-		Node *temp = q;
+		Node* temp = q;
 		q = q->next;
 		temp->next = list1.head->next;
 		list1.head->next = temp;
 	}
 }
 // 单链表是否存在环,找出环的入口 (ClinkedList版本)
-bool IsLinkHasCircle(ClinkedList &list, int &val)
+bool IsLinkHasCircle(ClinkedList& list, int& val)
 {
-	Node *fast = list.getHead(); // 快指针，使用getHead()访问私有成员
-	Node *slow = list.getHead(); // 慢指针，使用getHead()访问私有成员
+	Node* fast = list.getHead(); // 快指针，使用getHead()访问私有成员
+	Node* slow = list.getHead(); // 慢指针，使用getHead()访问私有成员
 
 	while (fast != nullptr && fast->next != nullptr) // 快指针每次走两步，慢指针每次走一步，如果存在环，快指针会追上慢指针
 	{
@@ -329,34 +331,7 @@ bool IsLinkHasCircle(ClinkedList &list, int &val)
 	}
 	return false; // 返回false表示不存在环
 }
-#if 0
 
-int main()
-{
-	ClinkedList list;
-	Node *n1 = new Node(25);
-	Node *n2 = new Node(67);
-	Node *n3 = new Node(32);
-	Node *n4 = new Node(18);
-	list.getHead()->next = n1;
-	n1->next = n2;
-	n2->next = n3;
-	n3->next = n4;
-	n4->next = n2; // 创建环
-
-	int val;
-	if (IsLinkHasCircle(list, val))
-	{
-		cout << "链表存在环，环的入口节点值为：" << val << endl;
-	}
-	else
-	{
-		cout << "链表不存在环" << endl;
-	}
-
-	return 0;
-}
-#endif // 0
 // 单链表是否存在环,找出环的入口 (Node*版本，支持直接传入头节点)
 bool IsLinkHasCircle(Node* head, int& val)
 {
@@ -381,7 +356,155 @@ bool IsLinkHasCircle(Node* head, int& val)
 	}
 	return false;//返回false表示不存在环
 }
+Node* IntersectionNode(Node* head1, Node* head2, int& val) {
+	 Node* A = head1;
+	 Node* B = head2;
+	 if (A == nullptr || B == nullptr) return nullptr;
+	 while (A != B)
+	 {
+	 	//		A = A == nullptr ? head2 : A->next;
+	 	//		B = B == nullptr ? head1 : B->next;
+	 	if (A != nullptr) {
+	 		A = A->next;
+	 	}
+	 	else
+	 	{
+	 		A = head2;
+	 	}
+	 	if (B != nullptr) {
+	 		B = B->next;
+	 	}
+	 	else {
+	 		B = head1;
+	 	}
+		return A;
+	 }
+	 val = A->data;
+	 return A;
+//	Node *A=head1;
+//	Node *B=head2;
+//	while (A!=B)
+//	{
+//		if(A!=nullptr){
+//			A=A->next;
+//		}
+//		else{
+//			A=head2;
+//		}
+//		if(B!=nullptr){
+//			B=B->next;
+//		}
+//		else{
+//			B=head1;
+//		}
+//
+//	}
+//	val=A->data;
+//	return A;
+	
 
+
+
+}
+bool IntersectionNode1(Node* head1, Node* head2, int& val) {
+	int count1 = 0, count2 = 0;
+	Node* A = head1->next;
+	Node* B = head2->next;
+	while (A != nullptr) {
+		count1++;
+		A = A->next;
+	}
+	while (B != nullptr)
+	{
+		count2++;
+		B = B->next;
+	}
+	A = head1;
+	B = head2;
+	if (count1 > count2) {
+		int offset = count1 - count2;
+		while (offset-- > 0) {
+			A = A->next;
+
+		}
+	}
+	else
+	{
+		int offset = count2 - count1;
+		while (offset-- > 0) {
+			B = B->next;
+
+		}
+
+	}
+	while (A != nullptr && B != nullptr) {
+		if (A == B) {
+			val = A->data;
+			return true;
+		}
+		A = A->next;
+		B = B->next;
+
+
+	}
+	return false;
+
+
+}
+
+int main() {
+	Node head;
+	Node n1(25), n2(67), n3(32), n4(18);
+
+	head.next = &n1;
+	n1.next = &n2;
+	n2.next = &n3;
+	n3.next = &n4;
+	Node head2;
+	Node n5(25);
+	head2.next = &n5;
+	n5.next = &n3;
+
+	int val;
+	if (IntersectionNode(&head,&head2, val)) {
+		cout << "链表相交 返回节点：" << val << endl;
+	}
+	else {
+		cout << "链表不存在相交" << endl;
+	}
+	return 0;
+}
+
+
+#if 0
+
+int main()
+{
+	ClinkedList list;
+	Node* n1 = new Node(25);
+	Node* n2 = new Node(67);
+	Node* n3 = new Node(32);
+	Node* n4 = new Node(18);
+	list.getHead()->next = n1;
+	n1->next = n2;
+	n2->next = n3;
+	n3->next = n4;
+	n4->next = n2; // 创建环
+
+	int val;
+	if (IsLinkHasCircle(list, val))
+	{
+		cout << "链表存在环，环的入口节点值为：" << val << endl;
+	}
+	else
+	{
+		cout << "链表不存在环" << endl;
+	}
+
+	return 0;
+}
+#endif // 0
+#if 0
 int main() {
 	Node head;
 	Node n1(25), n2(67), n3(32), n4(18);
@@ -400,7 +523,7 @@ int main() {
 
 	return 0;
 }
-
+#endif
 #if 0
 int main() {
 	// 测试从小到大合并
