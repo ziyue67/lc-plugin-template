@@ -24,6 +24,7 @@
     <ClCompile Include="data structures and algorithms.cpp" />
     <ClCompile Include="linked list.cpp" />
     <ClCompile Include="vector.cpp" />
+    <ClCompile Include="单向链表循环.cpp" />
     <ClCompile Include="单链表逆序.cpp" />
     <ClCompile Include="复盘.cpp" />
     <ClCompile Include="数组的增删改查.cpp" />

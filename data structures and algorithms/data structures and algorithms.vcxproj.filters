@@ -51,6 +51,9 @@
     <ClCompile Include="单链表逆序.cpp">
       <Filter>源文件\链表</Filter>
     </ClCompile>
+    <ClCompile Include="单向链表循环.cpp">
+      <Filter>源文件\链表</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\jun23\Documents\ctoon\includes\ctoon.h">
