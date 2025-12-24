@@ -23,6 +23,7 @@ public:
 		Node *node = new Node(val);
 		tail_->next=node;
 		tail_=node;//		tail_->next = head_;
+		
 
 
 	}
