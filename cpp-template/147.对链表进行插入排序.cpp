@@ -88,14 +88,15 @@ public:
         while (curr)
         {
             ListNode *perv = dummy; // 当前节点的前驱节点
-            while (perv->next &&perv->next->val <curr->val) 
+            while (perv->next &&perv->next->val <curr->val) // 找到插入位置
             {
                 perv = perv->next;
             }
-            ListNode *next=curr->next;
-            curr->next=perv->next;
-            perv->next=curr;
-            curr=next;
+            ListNode *next=curr->next; // 保存下一个节点
+            // 插入节点
+            curr->next=perv->next; // 插入节点
+            perv->next=curr; // 插入节点
+            curr=next; // 处理下一个节点
         }
         return  dummy->next;
         
