@@ -149,9 +149,34 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: 两个不相交的链表
+    ListNode* headA1 = createList({4, 1, 8, 4, 5});
+    ListNode* headB1 = createList({5, 6, 1, 8, 4, 5});
+    ListNode* res1 = solution.getIntersectionNode(headA1, headB1);
+    cout << "测试用例1: " << (res1 ? to_string(res1->val) : "null") << endl;
+    
+    // 测试用例2: 两个不相交的链表
+    ListNode* headA2 = createList({2, 6, 4});
+    ListNode* headB2 = createList({1, 5});
+    ListNode* res2 = solution.getIntersectionNode(headA2, headB2);
+    cout << "测试用例2: " << (res2 ? to_string(res2->val) : "null") << endl;
+    
+    return 0;
 }
 
 
