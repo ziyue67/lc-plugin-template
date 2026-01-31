@@ -60,6 +60,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cstring>
 #include "../common/ListNode.cpp"
 #include "../common/TreeNode.cpp"
 
@@ -96,8 +97,19 @@ public:
 // @lc code=end
 
 int main() {
+    MyHashSet myHashSet;
+    cout << boolalpha;
     
-    // your test code here
+    myHashSet.add(1);
+    myHashSet.add(2);
+    cout << "contains(1): " << myHashSet.contains(1) << endl;
+    cout << "contains(3): " << myHashSet.contains(3) << endl;
+    myHashSet.add(2);
+    cout << "contains(2): " << myHashSet.contains(2) << endl;
+    myHashSet.remove(2);
+    cout << "contains(2): " << myHashSet.contains(2) << endl;
+    
+    return 0;
 }
 
 

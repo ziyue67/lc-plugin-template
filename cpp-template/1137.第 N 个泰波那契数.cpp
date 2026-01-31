@@ -83,7 +83,11 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    cout << "测试用例1: " << solution.tribonacci(4) << endl;
+    cout << "测试用例2: " << solution.tribonacci(25) << endl;
+    
+    return 0;
 }
 
 

@@ -97,7 +97,12 @@ public:
 int main()
 {
     Solution solution;
-    // your test code here
+    cout << boolalpha;
+    
+    cout << "测试用例1: " << solution.isHappy(19) << endl;
+    cout << "测试用例2: " << solution.isHappy(2) << endl;
+    
+    return 0;
 }
 
 /*

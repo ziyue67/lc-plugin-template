@@ -84,7 +84,12 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    cout << "测试用例1: " << solution.fib(2) << endl;
+    cout << "测试用例2: " << solution.fib(3) << endl;
+    cout << "测试用例3: " << solution.fib(4) << endl;
+    
+    return 0;
 }
 
 

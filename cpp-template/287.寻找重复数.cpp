@@ -106,7 +106,20 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: nums = [1,3,4,2,2]
+    vector<int> nums1 = {1, 3, 4, 2, 2};
+    cout << "测试用例1: " << solution.findDuplicate(nums1) << endl;
+    
+    // 测试用例2: nums = [3,1,3,4,2]
+    vector<int> nums2 = {3, 1, 3, 4, 2};
+    cout << "测试用例2: " << solution.findDuplicate(nums2) << endl;
+    
+    // 测试用例3: nums = [3,3,3,3,3]
+    vector<int> nums3 = {3, 3, 3, 3, 3};
+    cout << "测试用例3: " << solution.findDuplicate(nums3) << endl;
+    
+    return 0;
 }
 
 
