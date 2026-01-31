@@ -75,9 +75,27 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: head = [2,4,7,8], cnt = 1
+    ListNode* head1 = createList({2, 4, 7, 8});
+    ListNode* res1 = solution.trainingPlan(head1, 1);
+    cout << "测试用例1: " << (res1 ? res1->val : -1) << endl;
+    
+    return 0;
 }
 
 
