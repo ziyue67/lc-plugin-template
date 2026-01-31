@@ -108,10 +108,48 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
+// 辅助函数：打印链表
+void printList(ListNode* head) {
+    cout << "[";
+    while (head) {
+        cout << head->val;
+        if (head->next) cout << ",";
+        head = head->next;
+    }
+    cout << "]";
+}
+
 int main()
 {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: head = [1,2,3,4,5], k = 2
+    ListNode* head1 = createList({1, 2, 3, 4, 5});
+    ListNode* res1 = solution.swapNodes(head1, 2);
+    cout << "测试用例1: ";
+    printList(res1);
+    cout << endl;
+    
+    // 测试用例2: head = [7,9,6,6,7,8,3,0,9,5], k = 5
+    ListNode* head2 = createList({7, 9, 6, 6, 7, 8, 3, 0, 9, 5});
+    ListNode* res2 = solution.swapNodes(head2, 5);
+    cout << "测试用例2: ";
+    printList(res2);
+    cout << endl;
+    
+    return 0;
 }
 
 /*
