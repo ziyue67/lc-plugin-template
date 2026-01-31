@@ -8,6 +8,16 @@ Quick overview
 - Common data-structures: `common/ListNode.cpp`, `common/TreeNode.cpp`
 - Recommended build system for C++: CMake (project includes `build/compile_commands.json`)
 
+Detailed Project Structure
+- `cpp-template/`: C++ solutions, mostly standalone `.cpp` files.
+- `python-template/`: Python solution packages and scripts.
+- `go-template/`: Go modules with internal test suites.
+- `java-template/`: Maven-based Java project for solutions.
+- `js-template/`: Node.js/JavaScript solutions and Jest tests.
+- `common/`: Shared implementations of `ListNode`, `TreeNode`, and utility helpers.
+- `build/`: Temporary build artifacts and configuration (e.g., `compile_commands.json`).
+
+
 Caveat
 - This repository contains many single-file LeetCode solutions (filenames like `1.两数之和.cpp`). Many files include `../common/*.cpp` directly for easy local compilation. When authoring new code prefer headers for shared types; do not change existing files without a clear reason.
 
@@ -61,6 +71,20 @@ How to run "a single test" (language-specific)
 - Java (Maven surefire): `mvn -Dtest=TestClass#testMethod test`
 - JS (Jest): `npx jest path/to/test.spec.js -t "test name"`
 
+Common Task Quick Reference
+- Add a new C++ solution:
+  1. Create `cpp-template/<id>.<name>.cpp`.
+  2. Include `../common/ListNode.cpp` (or `TreeNode.cpp`) if needed.
+  3. Implement `class Solution` and a `main()` function for testing.
+- Add a new Go solution:
+  1. Create a new file in `go-template/leetcode/editor/cn/`.
+  2. Add a corresponding `_test.go` file for verification.
+- Run all tests across project:
+  - Go: `go test ./...`
+  - Java: `mvn test`
+  - Python: `pytest`
+
+
 Code style guidelines (for agents editing code)
 - General rules
   - Be conservative: do not reformat or refactor unrelated files. Keep changes minimal and focused.
@@ -98,7 +122,23 @@ Code style guidelines (for agents editing code)
 - Forbidden practices
   - Do not use `as any`, `@ts-ignore`, or `@ts-expect-error` to silence type errors.
   - Do not delete failing tests to make CI pass.
-  - Do not commit build artifacts (avoid committing `build/` outputs unless necessary and approved).
+- Do not commit build artifacts (avoid committing `build/` outputs unless necessary and approved).
+  - Do not use global variables unless strictly necessary for the solution.
+  - Avoid using `system("pause")` or similar platform-specific blocking calls in C++.
+
+Code Review Checklist
+- [ ] Language-specific formatting applied (clang-format, black, gofmt, etc.)
+- [ ] No regression in shared `common/` files
+- [ ] New solution includes basic test cases in `main()` or equivalent
+- [ ] Commit message follows project style and clearly explains changes
+- [ ] No hardcoded absolute paths or machine-specific environment variables
+
+Debugging Tips
+- C++: Use `gdb` or `lldb`. For memory leaks, use Valgrind: `valgrind --leak-check=full ./out.exe`.
+- Python: Use `pdb` (`import pdb; pdb.set_trace()`) or print debugging with `repr()`.
+- Go: Use `delve` (dlv) for interactive debugging.
+- JS: Use Node.js inspector: `node --inspect-brk file.js`.
+
 
 Testing guidance
 - Unit tests exist for Go under `go-template` (`*_test.go`). Use `go test` to run them.
