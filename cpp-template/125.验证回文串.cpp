@@ -98,7 +98,13 @@ public:
 int main()
 {
     Solution solution;
-    // your test code here
+    cout << boolalpha;
+    
+    cout << "测试用例1: " << solution.isPalindrome("A man, a plan, a canal: Panama") << endl;
+    cout << "测试用例2: " << solution.isPalindrome("race a car") << endl;
+    cout << "测试用例3: " << solution.isPalindrome(" ") << endl;
+    
+    return 0;
 }
 
 /*

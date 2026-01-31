@@ -74,7 +74,11 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    cout << "测试用例1: " << solution.climbStairs(2) << endl;
+    cout << "测试用例2: " << solution.climbStairs(3) << endl;
+    
+    return 0;
 }
 
 

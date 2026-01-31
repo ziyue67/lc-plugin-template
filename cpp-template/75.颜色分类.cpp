@@ -98,7 +98,28 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: nums = [2,0,2,1,1,0]
+    vector<int> nums1 = {2, 0, 2, 1, 1, 0};
+    solution.sortColors(nums1);
+    cout << "测试用例1: [";
+    for (int i = 0; i < nums1.size(); i++) {
+        cout << nums1[i];
+        if (i < nums1.size() - 1) cout << ",";
+    }
+    cout << "]" << endl;
+    
+    // 测试用例2: nums = [2,0,1]
+    vector<int> nums2 = {2, 0, 1};
+    solution.sortColors(nums2);
+    cout << "测试用例2: [";
+    for (int i = 0; i < nums2.size(); i++) {
+        cout << nums2[i];
+        if (i < nums2.size() - 1) cout << ",";
+    }
+    cout << "]" << endl;
+    
+    return 0;
 }
 
 

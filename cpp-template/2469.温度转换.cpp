@@ -70,9 +70,32 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：打印双精度数组
+void printArray(vector<double>& arr) {
+    cout << "[";
+    for (int i = 0; i < arr.size(); i++) {
+        cout << arr[i];
+        if (i < arr.size() - 1) cout << ",";
+    }
+    cout << "]";
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: celsius = 36.50
+    vector<double> res1 = solution.convertTemperature(36.50);
+    cout << "测试用例1: ";
+    printArray(res1);
+    cout << endl;
+    
+    // 测试用例2: celsius = 122.11
+    vector<double> res2 = solution.convertTemperature(122.11);
+    cout << "测试用例2: ";
+    printArray(res2);
+    cout << endl;
+    
+    return 0;
 }
 
 

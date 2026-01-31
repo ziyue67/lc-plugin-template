@@ -88,7 +88,29 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例 1: nums = [2,7,11,15], target = 9
+    vector<int> nums1 = {2, 7, 11, 15};
+    int target1 = 9;
+    vector<int> res1 = solution.twoSum(nums1, target1);
+    cout << "测试用例 1: nums = [2,7,11,15], target = 9" << endl;
+    cout << "输出: [" << res1[0] << "," << res1[1] << "]" << endl << endl;
+    
+    // 测试用例 2: nums = [3,2,4], target = 6
+    vector<int> nums2 = {3, 2, 4};
+    int target2 = 6;
+    vector<int> res2 = solution.twoSum(nums2, target2);
+    cout << "测试用例 2: nums = [3,2,4], target = 6" << endl;
+    cout << "输出: [" << res2[0] << "," << res2[1] << "]" << endl << endl;
+    
+    // 测试用例 3: nums = [3,3], target = 6
+    vector<int> nums3 = {3, 3};
+    int target3 = 6;
+    vector<int> res3 = solution.twoSum(nums3, target3);
+    cout << "测试用例 3: nums = [3,3], target = 6" << endl;
+    cout << "输出: [" << res3[0] << "," << res3[1] << "]" << endl << endl;
+    
+    return 0;
 }
 
 

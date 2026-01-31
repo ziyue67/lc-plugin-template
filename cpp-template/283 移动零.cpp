@@ -29,9 +29,34 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：打印数组
+void printArray(vector<int>& nums) {
+    cout << "[";
+    for (int i = 0; i < nums.size(); i++) {
+        cout << nums[i];
+        if (i < nums.size() - 1) cout << ",";
+    }
+    cout << "]";
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: nums = [0,1,0,3,12]
+    vector<int> nums1 = {0, 1, 0, 3, 12};
+    solution.moveZeroes(nums1);
+    cout << "测试用例1: ";
+    printArray(nums1);
+    cout << endl;
+    
+    // 测试用例2: nums = [0]
+    vector<int> nums2 = {0};
+    solution.moveZeroes(nums2);
+    cout << "测试用例2: ";
+    printArray(nums2);
+    cout << endl;
+    
+    return 0;
 }
 
 

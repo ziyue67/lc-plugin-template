@@ -95,10 +95,45 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：打印数组
+void printArray(vector<int>& nums) {
+    cout << "[";
+    for (int i = 0; i < nums.size(); i++) {
+        cout << nums[i];
+        if (i < nums.size() - 1) cout << ",";
+    }
+    cout << "]";
+}
+
 int main()
 {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+    vector<int> nums1 = {1, 2, 3, 0, 0, 0};
+    vector<int> nums2 = {2, 5, 6};
+    solution.merge(nums1, 3, nums2, 3);
+    cout << "测试用例1: ";
+    printArray(nums1);
+    cout << endl;
+    
+    // 测试用例2: nums1 = [1], m = 1, nums2 = [], n = 0
+    vector<int> nums3 = {1};
+    vector<int> nums4 = {};
+    solution.merge(nums3, 1, nums4, 0);
+    cout << "测试用例2: ";
+    printArray(nums3);
+    cout << endl;
+    
+    // 测试用例3: nums1 = [0], m = 0, nums2 = [1], n = 1
+    vector<int> nums5 = {0};
+    vector<int> nums6 = {1};
+    solution.merge(nums5, 0, nums6, 1);
+    cout << "测试用例3: ";
+    printArray(nums5);
+    cout << endl;
+    
+    return 0;
 }
 
 /*

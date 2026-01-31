@@ -43,7 +43,14 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: s = "IceCreAm"
+    cout << "测试用例1: " << solution.reverseVowels("IceCreAm") << endl;
+    
+    // 测试用例2: s = "leetcode"
+    cout << "测试用例2: " << solution.reverseVowels("leetcode") << endl;
+    
+    return 0;
 }
 
 
