@@ -60,7 +60,11 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    cout << "测试用例1: " << solution.sum(12, 5) << endl;
+    cout << "测试用例2: " << solution.sum(-10, 4) << endl;
+    
+    return 0;
 }
 
 

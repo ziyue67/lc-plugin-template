@@ -81,9 +81,30 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: head = [1,0,1]
+    ListNode* head1 = createList({1, 0, 1});
+    cout << "测试用例1: " << solution.getDecimalValue(head1) << endl;
+    
+    // 测试用例2: head = [0]
+    ListNode* head2 = createList({0});
+    cout << "测试用例2: " << solution.getDecimalValue(head2) << endl;
+    
+    return 0;
 }
 
 

@@ -47,7 +47,28 @@ return p + 1;
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: nums = [1,1,2]
+    vector<int> nums1 = {1, 1, 2};
+    int len1 = solution.removeDuplicates(nums1);
+    cout << "测试用例1: 长度=" << len1 << ", nums=[";
+    for (int i = 0; i < len1; i++) {
+        cout << nums1[i];
+        if (i < len1 - 1) cout << ",";
+    }
+    cout << "]" << endl;
+    
+    // 测试用例2: nums = [0,0,1,1,1,2,2,3,3,4]
+    vector<int> nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+    int len2 = solution.removeDuplicates(nums2);
+    cout << "测试用例2: 长度=" << len2 << ", nums=[";
+    for (int i = 0; i < len2; i++) {
+        cout << nums2[i];
+        if (i < len2 - 1) cout << ",";
+    }
+    cout << "]" << endl;
+    
+    return 0;
 }
 
 

@@ -83,7 +83,12 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    cout << boolalpha;
+    
+    cout << "测试用例1: " << solution.isSubsequence("abc", "ahbgdc") << endl;
+    cout << "测试用例2: " << solution.isSubsequence("axc", "ahbgdc") << endl;
+    
+    return 0;
 }
 
 

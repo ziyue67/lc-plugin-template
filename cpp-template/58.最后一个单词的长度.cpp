@@ -84,7 +84,12 @@ public:
 int main()
 {
     Solution solution;
-    // your test code here
+    
+    cout << "测试用例1: " << solution.lengthOfLastWord("Hello World") << endl;
+    cout << "测试用例2: " << solution.lengthOfLastWord("   fly me   to   the moon  ") << endl;
+    cout << "测试用例3: " << solution.lengthOfLastWord("luffy is still joyboy") << endl;
+    
+    return 0;
 }
 
 /*

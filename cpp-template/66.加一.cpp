@@ -90,7 +90,38 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: digits = [1,2,3]
+    vector<int> digits1 = {1, 2, 3};
+    vector<int> res1 = solution.plusOne(digits1);
+    cout << "测试用例1: [";
+    for (int i = 0; i < res1.size(); i++) {
+        cout << res1[i];
+        if (i < res1.size() - 1) cout << ",";
+    }
+    cout << "]" << endl;
+    
+    // 测试用例2: digits = [4,3,2,1]
+    vector<int> digits2 = {4, 3, 2, 1};
+    vector<int> res2 = solution.plusOne(digits2);
+    cout << "测试用例2: [";
+    for (int i = 0; i < res2.size(); i++) {
+        cout << res2[i];
+        if (i < res2.size() - 1) cout << ",";
+    }
+    cout << "]" << endl;
+    
+    // 测试用例3: digits = [9]
+    vector<int> digits3 = {9};
+    vector<int> res3 = solution.plusOne(digits3);
+    cout << "测试用例3: [";
+    for (int i = 0; i < res3.size(); i++) {
+        cout << res3[i];
+        if (i < res3.size() - 1) cout << ",";
+    }
+    cout << "]" << endl;
+    
+    return 0;
 }
 
 

@@ -83,7 +83,16 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: strs = ["flower","flow","flight"]
+    vector<string> strs1 = {"flower", "flow", "flight"};
+    cout << "测试用例1: " << solution.longestCommonPrefix(strs1) << endl;
+    
+    // 测试用例2: strs = ["dog","racecar","car"]
+    vector<string> strs2 = {"dog", "racecar", "car"};
+    cout << "测试用例2: " << solution.longestCommonPrefix(strs2) << endl;
+    
+    return 0;
 }
 
 

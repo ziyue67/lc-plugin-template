@@ -37,6 +37,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "../common/ListNode.cpp"
 #include "../common/TreeNode.cpp"
 
@@ -68,9 +69,39 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
+// 辅助函数：打印数组
+void printArray(vector<int>& nums) {
+    cout << "[";
+    for (int i = 0; i < nums.size(); i++) {
+        cout << nums[i];
+        if (i < nums.size() - 1) cout << ",";
+    }
+    cout << "]";
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: head = [3,6,4,1]
+    ListNode* head1 = createList({3, 6, 4, 1});
+    vector<int> res1 = solution.reverseBookList(head1);
+    cout << "测试用例1: ";
+    printArray(res1);
+    cout << endl;
+    
+    return 0;
 }
 
 

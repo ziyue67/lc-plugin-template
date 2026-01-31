@@ -109,7 +109,12 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    cout << "测试用例1: " << solution.maxVowels("abciiidef", 3) << endl;
+    cout << "测试用例2: " << solution.maxVowels("aeiou", 2) << endl;
+    cout << "测试用例3: " << solution.maxVowels("leetcode", 3) << endl;
+    
+    return 0;
 }
 
 

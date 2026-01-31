@@ -69,9 +69,34 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：打印字符数组
+void printChars(vector<char>& s) {
+    cout << "[";
+    for (int i = 0; i < s.size(); i++) {
+        cout << "\"" << s[i] << "\"";
+        if (i < s.size() - 1) cout << ",";
+    }
+    cout << "]";
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: s = ["h","e","l","l","o"]
+    vector<char> s1 = {'h', 'e', 'l', 'l', 'o'};
+    solution.reverseString(s1);
+    cout << "测试用例1: ";
+    printChars(s1);
+    cout << endl;
+    
+    // 测试用例2: s = ["H","a","n","n","a","h"]
+    vector<char> s2 = {'H', 'a', 'n', 'n', 'a', 'h'};
+    solution.reverseString(s2);
+    cout << "测试用例2: ";
+    printChars(s2);
+    cout << endl;
+    
+    return 0;
 }
 
 

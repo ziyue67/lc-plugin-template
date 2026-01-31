@@ -129,10 +129,33 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
 int main()
 {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: 无环链表
+    ListNode* head1 = createList({3, 2, 0, -4});
+    ListNode* res1 = solution.detectCycle(head1);
+    cout << "测试用例1: " << (res1 ? to_string(res1->val) : "null") << endl;
+    
+    // 测试用例2: 无环链表
+    ListNode* head2 = createList({1});
+    ListNode* res2 = solution.detectCycle(head2);
+    cout << "测试用例2: " << (res2 ? to_string(res2->val) : "null") << endl;
+    
+    return 0;
 }
 
 /*

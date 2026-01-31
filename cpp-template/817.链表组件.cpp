@@ -92,9 +92,32 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: head = [0,1,2,3], nums = [0,1,3]
+    ListNode* head1 = createList({0, 1, 2, 3});
+    vector<int> nums1 = {0, 1, 3};
+    cout << "测试用例1: " << solution.numComponents(head1, nums1) << endl;
+    
+    // 测试用例2: head = [0,1,2,3,4], nums = [0,3,1,4]
+    ListNode* head2 = createList({0, 1, 2, 3, 4});
+    vector<int> nums2 = {0, 3, 1, 4};
+    cout << "测试用例2: " << solution.numComponents(head2, nums2) << endl;
+    
+    return 0;
 }
 
 

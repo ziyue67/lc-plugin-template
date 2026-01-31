@@ -85,7 +85,18 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: g = [1,2,3], s = [1,1]
+    vector<int> g1 = {1, 2, 3};
+    vector<int> s1 = {1, 1};
+    cout << "测试用例1: " << solution.findContentChildren(g1, s1) << endl;
+    
+    // 测试用例2: g = [1,2], s = [1,2,3]
+    vector<int> g2 = {1, 2};
+    vector<int> s2 = {1, 2, 3};
+    cout << "测试用例2: " << solution.findContentChildren(g2, s2) << endl;
+    
+    return 0;
 }
 
 

@@ -126,10 +126,58 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：从vector创建链表
+ListNode* createList(vector<int> vals) {
+    if (vals.empty()) return nullptr;
+    ListNode* head = new ListNode(vals[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vals.size(); i++) {
+        cur->next = new ListNode(vals[i]);
+        cur = cur->next;
+    }
+    return head;
+}
+
+// 辅助函数：打印链表
+void printList(ListNode* head) {
+    cout << "[";
+    while (head) {
+        cout << head->val;
+        if (head->next) cout << ",";
+        head = head->next;
+    }
+    cout << "]";
+}
+
 int main()
 {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: l1 = [1,2,4], l2 = [1,3,4]
+    ListNode* l1 = createList({1, 2, 4});
+    ListNode* l2 = createList({1, 3, 4});
+    ListNode* res1 = solution.mergeTwoLists(l1, l2);
+    cout << "测试用例1: ";
+    printList(res1);
+    cout << endl;
+    
+    // 测试用例2: l1 = [], l2 = []
+    ListNode* l3 = nullptr;
+    ListNode* l4 = nullptr;
+    ListNode* res2 = solution.mergeTwoLists(l3, l4);
+    cout << "测试用例2: ";
+    printList(res2);
+    cout << endl;
+    
+    // 测试用例3: l1 = [], l2 = [0]
+    ListNode* l5 = nullptr;
+    ListNode* l6 = createList({0});
+    ListNode* res3 = solution.mergeTwoLists(l5, l6);
+    cout << "测试用例3: ";
+    printList(res3);
+    cout << endl;
+    
+    return 0;
 }
 
 /*

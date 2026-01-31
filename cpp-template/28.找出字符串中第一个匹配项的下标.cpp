@@ -38,7 +38,14 @@ public:
 
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: haystack = "sadbutsad", needle = "sad"
+    cout << "测试用例1: " << solution.strStr("sadbutsad", "sad") << endl;
+    
+    // 测试用例2: haystack = "leetcode", needle = "leeto"
+    cout << "测试用例2: " << solution.strStr("leetcode", "leeto") << endl;
+    
+    return 0;
 }
 
 

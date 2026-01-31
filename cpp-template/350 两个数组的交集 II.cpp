@@ -81,9 +81,36 @@ public:
 };
 // @lc code=end
 
+// 辅助函数：打印数组
+void printArray(vector<int>& nums) {
+    cout << "[";
+    for (int i = 0; i < nums.size(); i++) {
+        cout << nums[i];
+        if (i < nums.size() - 1) cout << ",";
+    }
+    cout << "]";
+}
+
 int main() {
     Solution solution;
-    // your test code here
+    
+    // 测试用例1: nums1 = [1,2,2,1], nums2 = [2,2]
+    vector<int> nums1 = {1, 2, 2, 1};
+    vector<int> nums2 = {2, 2};
+    vector<int> res1 = solution.intersect(nums1, nums2);
+    cout << "测试用例1: ";
+    printArray(res1);
+    cout << endl;
+    
+    // 测试用例2: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+    vector<int> nums3 = {4, 9, 5};
+    vector<int> nums4 = {9, 4, 9, 8, 4};
+    vector<int> res2 = solution.intersect(nums3, nums4);
+    cout << "测试用例2: ";
+    printArray(res2);
+    cout << endl;
+    
+    return 0;
 }
 
 
