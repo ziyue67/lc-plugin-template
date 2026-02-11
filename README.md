@@ -18,18 +18,22 @@
 
 ```
 lc-plugin-template/
-├── cpp-template/          # C++ 模板和题解（65题，全部含测试用例）
+├── cpp-template/          # C++ 模板和题解（68题，全部含测试用例）
 │   ├── 1.两数之和.cpp
+│   ├── 3.无重复字符的最长子串.cpp
+│   ├── 5.最长回文子串.cpp
 │   ├── 9.回文数.cpp
 │   ├── 206.反转链表.cpp
 │   └── ...
-├── python-template/       # Python 模板和题解
-├── go-template/           # Go 模板和题解
-├── java-template/         # Java 模板和题解
-├── js-template/           # JavaScript 模板和题解
+├── python-template/       # Python 模板和题解（3题）
+├── go-template/           # Go 模板和题解（2题）
+├── java-template/         # Java 模板和题解（2题）
+├── js-template/           # JavaScript 模板和题解（2题）
 ├── common/                # 通用数据结构定义
 │   ├── ListNode.cpp       # 链表节点定义
 │   └── TreeNode.cpp       # 树节点定义
+├── ctoon_example/         # Ctoon 库示例项目
+├── tmp_opencode_scan/     # 临时扫描目录（包含多个示例项目）
 ├── build/                 # 构建辅助文件
 ├── AGENTS.md              # 代理/自动化编辑须知
 ├── CLAUDE.md              # Claude Code 开发指南
@@ -40,7 +44,7 @@ lc-plugin-template/
 
 ### C++
 
-**核心特性：所有65题均包含完整的测试用例 main 函数！**
+**核心特性：所有68题均包含完整的测试用例 main 函数！**
 
 #### 编译运行
 
@@ -62,13 +66,15 @@ cmake -S cpp-template -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release -- -j
 ```
 
-#### C++ 题目列表（65题全部含测试用例）
+#### C++ 题目列表（68题全部含测试用例）
 
-##### 数组与字符串 (19题)
+##### 数组与字符串 (21题)
 
 | 题号 | 题目 | 难度 | 测试用例 |
 |------|------|------|----------|
 | 1 | 两数之和 | 简单 | ✅ 3个 |
+| 3 | 无重复字符的最长子串 | 中等 | ✅ 3个 |
+| 5 | 最长回文子串 | 中等 | ✅ 3个 |
 | 9 | 回文数 | 简单 | ✅ 4个 |
 | 14 | 最长公共前缀 | 简单 | ✅ 2个 |
 | 26 | 删除有序数组中的重复项 | 简单 | ✅ 2个 |
@@ -159,41 +165,42 @@ cmake --build build --config Release -- -j
 | LCR 171 | 训练计划 V | 简单 | ✅ 1个 |
 | 训练计划-iv | 训练计划 IV | 简单 | ✅ 1个 |
 
-### Go
+### Go（2题）
 - 运行包内所有测试：
   - go test ./...
 - 运行单个测试：
   - go test ./go-template/leetcode/editor/cn -run TestName
 - 格式化：gofmt -w .
 
-### Python
+### Python（3题）
 - 运行单文件脚本：
   - python3 python-template/leetcode/editor/cn/merge-two-sorted-lists.py
 - pytest（若添加测试）：
   - pytest -q path/to/test_file.py::test_name
 - 格式化：black .；导入排序：isort .
 
-### JavaScript / Node
+### JavaScript / Node（2题）
 - 运行单文件：
   - node js-template/leetcode/editor/cn/merge-two-sorted-lists.js
 - 测试（若添加）：
   - npx jest path/to/test.spec.js -t "test name"
 - 格式化/校验：prettier --write .；eslint .
 
-### Java (Maven)
+### Java (Maven)（2题）
 - 构建：mvn -f java-template/pom.xml compile
 - 测试：mvn -f java-template/pom.xml test
 
 ## 统计信息
 
-- **总完成题数**: 65 题（C++）
-- **数组与字符串**: 19 题
+- **总完成题数**: 68 题（C++）
+- **数组与字符串**: 21 题
 - **链表**: 25 题（基础10 + 进阶15）
 - **数学与动态规划**: 9 题
 - **面试题系列**: 5 题
 - **LCR 专项**: 7 题
+- **其他语言模板**: Python 3题、Go 2题、Java 2题、JavaScript 2题
 - **全部包含测试用例**: ✅ 100%
-- **最近更新**: 2025-02-01
+- **最近更新**: 2026-02-11
 
 ## 代码特点
 
@@ -207,12 +214,12 @@ cmake --build build --config Release -- -j
 
 ## 学习路径建议
 
-1. **数组与字符串**: 入门基础，熟悉基本操作和 STL 使用
-2. **链表基础**: 理解指针和节点操作，掌握基本链表算法
-3. **链表进阶**: 学习复杂链表操作（反转、排序、重排等）
-4. **数学与动态规划**: 培养数学思维和状态转移能力
-5. **面试题系列**: 针对面试常考题目进行专项练习
-6. **LCR 专项**: 综合练习，巩固知识点
+1. **数组与字符串**: 入门基础，熟悉基本操作和 STL 使用（21题）
+2. **链表基础**: 理解指针和节点操作，掌握基本链表算法（10题）
+3. **链表进阶**: 学习复杂链表操作（反转、排序、重排等）（15题）
+4. **数学与动态规划**: 培养数学思维和状态转移能力（9题）
+5. **面试题系列**: 针对面试常考题目进行专项练习（5题）
+6. **LCR 专项**: 综合练习，巩固知识点（7题）
 
 ## 如何运行"单个测试"
 - C++：编译并运行包含 main() 的单文件（示例见上）。
