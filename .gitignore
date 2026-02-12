@@ -369,8 +369,42 @@ FodyWeavers.xsd
 *.md
 !README.md
 !CLAUDE.md
+!AGENTS.md
+!plans/*.md
+
+# JSON files (but keep compile_commands.json for LSP)
 *.json
-build
+!compile_commands.json
+
+# Build directory (but keep compile_commands.json)
+build/*
+!build/compile_commands.json
+
+# CMake build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Compiled executables
+*.exe
+*.out
+*.app
+
+# Object files
+*.o
+*.obj
+
+# Data structures and algorithms outputs
+/data structures and algorithms/.vscode
+/data structures and algorithms/output
+data structures and algorithms/*.exe
+data structures and algorithms/*.o
+
+# cpp-template outputs
+cpp-template/output/
 /data structures and algorithms/.vscode
 /data structures and algorithms/output
 data structures and algorithms/test.exe
