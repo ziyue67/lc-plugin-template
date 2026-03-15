@@ -15,31 +15,31 @@
  * Testcase Example:  '[1,2,3,4,5]\n2\n[0,1,2]\n4'
  *
  * 给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。
- * 
- * 
- * 
+ *
+ *
+ *
  * 示例 1：
- * 
+ *
  * 输入：head = [1,2,3,4,5], k = 2
  * 输出：[4,5,1,2,3]
- * 
- * 
+ *
+ *
  * 示例 2：
- * 
+ *
  * 输入：head = [0,1,2], k = 4
  * 输出：[2,0,1]
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  * 提示：
- * 
- * 
+ *
+ *
  * 链表中节点的数目在范围 [0, 500] 内
  * -100 <= Node.val <= 100
  * 0 <= k <= 2 * 10^9
- * 
- * 
+ *
+ *
  */
 
 #include <iostream>
@@ -61,9 +61,11 @@ using namespace std;
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    ListNode* rotateRight(ListNode* head, int k) {
+    ListNode *rotateRight(ListNode *head, int k)
+    {
         // 处理边界条件
         // if(head==nullptr || k==0)return head;
         // ListNode *tail=head;
@@ -82,42 +84,63 @@ public:
         // tail->next = head;
         // p->next = nullptr;
         // return newHead;
-        ListNode *p = head;
-        ListNode *q=head;
-        int n=0;
-        if(head==nullptr || k==0)return head;
-        //O(n)时间复杂度
-        for(ListNode *temp=head;temp!=nullptr;temp=temp->next){  //找到链表长度
-            n++;
-        }
-        k=k%n;
-        if(k==0) return head; // k是n的倍数时不需要旋转
-        // 快慢指针法：先让p移动k步
-        for(int i=0;i<k;i++){ //先让p移动k步
-            p=p->next;
-        }
-        // 然后p和q同时移动，直到p到达最后一个节点
-        while (p->next!=nullptr) //找到倒数第k+1个节点
-        {
-            p=p->next;
-            q=q->next;
-        }
-        ListNode *newHead = q->next; // 新的头节点
-        p->next=head;//连接
-        q->next=nullptr;//断开
-        return newHead;
+        // ListNode *p = head;
+        // ListNode *q=head;
+        // int n=0;
+        // if(head==nullptr || k==0)return head;
+        // //O(n)时间复杂度
+        // for(ListNode *temp=head;temp!=nullptr;temp=temp->next){  //找到链表长度
+        //     n++;
+        // }
+        // k=k%n;
+        // if(k==0) return head; // k是n的倍数时不需要旋转
+        // // 快慢指针法：先让p移动k步
+        // for(int i=0;i<k;i++){ //先让p移动k步
+        //     p=p->next;
+        // }
+        // // 然后p和q同时移动，直到p到达最后一个节点
+        // while (p->next!=nullptr) //找到倒数第k+1个节点
+        // {
+        //     p=p->next;
+        //     q=q->next;
+        // }
+        // ListNode *newHead = q->next; // 新的头节点
+        // p->next=head;//连接
+        // q->next=nullptr;//断开
+        // return newHead;
         // O(1)空间复杂度 O(n)时间复杂度
         // 在选择遍历链表时候 找到倒数第k+1节点 然后在从这个节点设置为头节点(2) 与 从末尾链接到头节点 (1) 然后在断开节点这样就返回了(3)  头节点
+        if (head == nullptr || k == 0)
+            return head;
+        ListNode *curr = head; // 找到链表尾
+        int n = 1;              // 至少有一个节点
+        while (curr->next != nullptr)
+        { // 找到链表长度
+            curr = curr->next;
+            n++;
+        }
+        curr->next = head; // 1.连接
+        k = k % n;         // 求链表长度
+        for (int i = 0; i < n - k; i++)
+        { // 3.找到倒数第k+1个节点
+            curr = curr->next;
+        }
+        ListNode *newHead = curr->next; // 4.新头节点
+        curr->next = nullptr;
+        return newHead;
     }
 };
 // @lc code=end
 
 // 辅助函数：从vector创建链表
-ListNode* createList(vector<int> vals) {
-    if (vals.empty()) return nullptr;
-    ListNode* head = new ListNode(vals[0]);
-    ListNode* cur = head;
-    for (int i = 1; i < vals.size(); i++) {
+ListNode *createList(vector<int> vals)
+{
+    if (vals.empty())
+        return nullptr;
+    ListNode *head = new ListNode(vals[0]);
+    ListNode *cur = head;
+    for (int i = 1; i < vals.size(); i++)
+    {
         cur->next = new ListNode(vals[i]);
         cur = cur->next;
     }
@@ -125,37 +148,39 @@ ListNode* createList(vector<int> vals) {
 }
 
 // 辅助函数：打印链表
-void printList(ListNode* head) {
+void printList(ListNode *head)
+{
     cout << "[";
-    while (head) {
+    while (head)
+    {
         cout << head->val;
-        if (head->next) cout << ",";
+        if (head->next)
+            cout << ",";
         head = head->next;
     }
     cout << "]";
 }
 
-int main() {
+int main()
+{
     Solution solution;
-    
+
     // 测试用例1: head = [1,2,3,4,5], k = 2
-    ListNode* head1 = createList({1, 2, 3, 4, 5});
-    ListNode* res1 = solution.rotateRight(head1, 2);
+    ListNode *head1 = createList({1, 2, 3, 4, 5});
+    ListNode *res1 = solution.rotateRight(head1, 2);
     cout << "测试用例1: ";
     printList(res1);
     cout << endl;
-    
+
     // 测试用例2: head = [0,1,2], k = 4
-    ListNode* head2 = createList({0, 1, 2});
-    ListNode* res2 = solution.rotateRight(head2, 4);
+    ListNode *head2 = createList({0, 1, 2});
+    ListNode *res2 = solution.rotateRight(head2, 4);
     cout << "测试用例2: ";
     printList(res2);
     cout << endl;
-    
+
     return 0;
 }
-
-
 
 /*
 // @lcpr case=start
@@ -167,4 +192,3 @@ int main() {
 // @lcpr case=end
 
  */
-

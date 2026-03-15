@@ -75,21 +75,33 @@ using namespace std;
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
+        // ListNode *dummy=new ListNode(0,head); //创建一个虚拟头节点
+        // ListNode *fast=dummy; //创建一个快指针
+        // ListNode *slow=dummy; //创建一个慢指针
+        // for (int i = 0; i < n; i++) //快指针先走n步
+        // {
+        //     fast=fast->next; //快指针先走n步
+        // }
+        // while(fast->next!=nullptr){ //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
+        //     fast=fast->next;    //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
+        //     slow=slow->next;    //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
+        // }
+        // slow->next=slow->next->next;//删除倒数第n个节点
+        // ListNode *ans=dummy->next; //返回链表头节点
+        // delete dummy; //删除虚拟头节点
+        // return ans; //返回链表头节点
         ListNode *dummy=new ListNode(0,head); //创建一个虚拟头节点
         ListNode *fast=dummy; //创建一个快指针
         ListNode *slow=dummy; //创建一个慢指针
-        for (int i = 0; i < n; i++) //快指针先走n步
-        {
+        for(int i=0;i<n;i++){
             fast=fast->next; //快指针先走n步
         }
-        while(fast->next!=nullptr){ //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
-            fast=fast->next;    //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
-            slow=slow->next;    //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
+        while(fast->next!=nullptr){
+            fast=fast->next; //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
+            slow=slow->next; //快指针走到链表末尾时，慢指针指向倒数第n个节点的前一个节点
         }
-        slow->next=slow->next->next;//删除倒数第n个节点
-        ListNode *ans=dummy->next; //返回链表头节点
-        delete dummy; //删除虚拟头节点
-        return ans; //返回链表头节点
+        slow->next=slow->next->next; //删除倒数第n个节点
+        return dummy->next; //返回链表头节点
         
 
 
