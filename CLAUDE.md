@@ -4,109 +4,140 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a C++ learning project for data structures and algorithms implementation. The project is primarily designed for educational purposes, suitable for both beginners and advanced learners who want to review and consolidate fundamental knowledge.
+A multi-language LeetCode solutions template repository, primarily focused on C++ implementations. Each problem is a standalone file with its own `main()` function for testing. The project is designed for local practice, teaching demonstrations, and automated evaluation.
 
 ## Build and Development Environment
 
-- **Compiler**: Visual Studio 2022/2026 or compatible C++ development environment
-- **Language**: C++20 (primary), with C++11 support for some configurations
-- **Project Format**: Visual Studio project file (.vcxproj) located in the subdirectory
-- **Platforms**: Supports both Win32 (x86) and x64 architectures
-- **External Dependencies**: Ctoon library (optional, referenced but not required for core functionality)
+### C++ (Primary)
+
+- **Standard**: C++20
+- **Compiler**: g++ or compatible (Visual Studio also supported)
+- **Build System**: CMake 3.16+
 
 ### Common Commands
 
 ```bash
-# Compile and run individual files (from project root)
-g++ -std=c++20 "data structures and algorithms/data structures and algorithms.cpp" -o main && ./main
-g++ -std=c++20 "data structures and algorithms/linked list.cpp" -o linked_list && ./linked_list
-g++ -std=c++20 "data structures and algorithms/数组的增删改查.cpp" -o array_ops && ./array_ops
-g++ -std=c++20 "data structures and algorithms/复盘.cpp" -o review && ./review
-g++ -std=c++20 "data structures and algorithms/单链表逆序.cpp" -o reverse && ./reverse
+# Compile and run a single problem file (recommended for testing)
+g++ -std=c++20 "cpp-template/1.两数之和.cpp" -O2 -Wall -Wextra -o test && ./test
 
-# Run with Visual Studio
-# Open "data structures and algorithms/data structures and algorithms.vcxproj"
-# Use F5 to build and run
-# Build configurations available: Debug/Release for both Win32 and x64
+# CMake build - compiles all problems with main() functions
+cmake -S cpp-template -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release -- -j
 
-# Test specific sections by modifying #if 0/#if 1 flags in the source files
+# Run specific executable after CMake build
+./build/bin/lc_<hash>
+
+# Other languages
+go test ./go-template/...
+python python-template/leetcode/editor/cn/merge-two-sorted-lists.py
+node js-template/leetcode/editor/cn/merge-two-sorted-lists.js
 ```
 
 ## Code Architecture
 
-### Main Components
+### Project Structure
 
-1. **Array Implementation** (`data structures and algorithms.cpp`)
-   - Basic array operations (insert, delete, search, reverse)
-   - Dynamic Array class with automatic capacity expansion
-   - Demonstrates O(1) amortized push_back, O(n) insert/erase operations
+```text
+lc-plugin-template/
+├── cpp-template/              # C++ solutions (80+ problems)
+│   ├── *.cpp                  # Individual problem files in root
+│   ├── leetcode/
+│   │   └── editor/
+│   │       ├── common/        # Shared data structures
+│   │       │   ├── ListNode.cpp
+│   │       │   └── TreeNode.cpp
+│   │       ├── cn/            # Chinese LeetCode solutions
+│   │       └── en/            # English LeetCode solutions
+│   ├── build/                 # CMake build output
+│   └── CMakeLists.txt         # Auto-generates targets for each main()
+├── python-template/           # Python solutions
+├── go-template/               # Go solutions
+├── java-template/             # Java solutions
+├── js-template/               # JavaScript solutions
+└── common/                    # Additional shared utilities
+```
 
-2. **Linked List Implementation** (`linked list.cpp`)
-   - Singly linked list with head node
-   - Operations: insertHead, insertTail, remove, reverse, find
-   - Friend functions for merging sorted lists and finding kth node from end
+### CMake Build System
 
-3. **Vector Template Class** (`vector.cpp`)
-   - Complete STL-like vector implementation (commented out)
-   - Template-based design supporting any data type
-   - Full iterator support for range-based for loops
+The CMakeLists.txt automatically:
+1. Scans all `.cpp` files for `int main(` functions
+2. Creates a separate executable target for each problem file
+3. Builds a static `common` library from `leetcode/editor/common/*.cpp`
+4. Uses MD5 hash for unique target names to avoid conflicts
 
-### Code Structure Patterns
+### Common Data Structures
 
-- **Learning-Oriented Design**: Code contains extensive Chinese comments explaining concepts
-- **Progressive Complexity**: Starts with basic array operations, moves to complex data structures
-- **Multiple Implementation Examples**: Different approaches to the same problem (e.g., array reverse using different pointer techniques)
-- **Conditional Compilation**: Uses `#if 0` blocks to enable/disable different sections for testing
+Located in `cpp-template/leetcode/editor/common/`:
 
-### Key Files
+- **ListNode**: Singly linked list with `createHead()`, `print()`, `freeList()`
+- **TreeNode**: Binary tree with `createRoot()`, `print()`, `freeTree()`
 
-- `data structures and algorithms/data structures and algorithms.cpp`: Main file with array operations and dynamic array class
-- `data structures and algorithms/linked list.cpp`: Complete linked list implementation with friend functions, circular detection, and reversal
-- `data structures and algorithms/vector.cpp`: Template-based vector implementation (educational, commented out)
-- `data structures and algorithms/数组的增删改查.cpp`: Basic array CRUD operations in Chinese
-- `data structures and algorithms/单链表逆序.cpp`: Linked list reversal exercises
-- `data structures and algorithms/复盘.cpp`: Comprehensive review and summary exercises with various operations
-- `data structures and algorithms/复盘单链表.cpp`: Additional linked list review exercises
-- `data structures and algorithms/[1-3].cpp`: Additional coding exercise files
-- `data structures and algorithms/data structures and algorithms.vcxproj`: Visual Studio project file with all source files included
+Include paths in problem files:
+
+```cpp
+#include "../common/ListNode.cpp"
+#include "../common/TreeNode.cpp"
+```
+
+### Problem File Pattern
+
+Each C++ problem file follows this structure:
+
+```cpp
+/*
+ * @lc app=leetcode.cn id=1 lang=cpp
+ * [1] 两数之和
+ * ... LeetCode metadata ...
+ */
+
+#include <iostream>
+#include <vector>
+#include "../common/ListNode.cpp"
+#include "../common/TreeNode.cpp"
+
+using namespace std;
+
+// @lc code=start
+class Solution {
+public:
+    // Solution implementation
+};
+// @lc code=end
+
+int main() {
+    Solution solution;
+    // Test cases with cout output
+    return 0;
+}
+```
 
 ## Development Guidelines
 
-### Testing Approach
+### Adding New Problems
 
-- Use conditional compilation (`#if 0`/`#if 1`) to test different sections
-- Each main() function contains multiple test scenarios
-- Random number generation for creating test data
+1. Create new `.cpp` file in `cpp-template/` or `leetcode/editor/cn/`
+2. Follow LeetCode plugin format with `@lc` comments
+3. Include required headers from `../common/` if using ListNode/TreeNode
+4. Add `main()` function with test cases
+5. CMake will automatically detect and create build target
 
 ### Code Style
 
-- Chinese comments for educational clarity
-- Clear separation between interface and implementation
-- Memory management with explicit delete operations
-- Proper use of pointers and references
+- Chinese filenames and comments for educational purposes
+- Each file is self-contained and independently compilable
+- Use `cout` for test output in `main()`
+- Preserve `@lc code=start/end` markers for LeetCode plugin compatibility
 
-### Adding New Implementations
+### Testing
 
-When adding new data structures or algorithms:
-1. Create a new .cpp file in the `data structures and algorithms/` subdirectory
-2. Follow the existing pattern with clear Chinese comments for educational purposes
-3. Include comprehensive test cases in main() using conditional compilation (`#if 0`/`#if 1`)
-4. Add the new file to the Visual Studio project file (`data structures and algorithms.vcxproj`) if using IDE builds
-5. Use consistent naming conventions (prefer Chinese filenames for educational content)
+- Each file's `main()` contains multiple test cases
+- Compile single files for quick testing
+- Use CMake build to verify all solutions compile
+- Do not batch modify include paths in existing files
 
-### Testing and Code Activation
+### Project Conventions
 
-Most files contain multiple sections controlled by `#if 0`/`#if 1` preprocessor directives:
-- To test specific functionality, change `#if 0` to `#if 1` for the desired section
-- Each file typically has a main() function with different test scenarios
-- Common pattern: multiple implementations of the same algorithm with different approaches
-
-### Project Structure Notes
-
-- **Source Organization**: All implementation files are located in the `data structures and algorithms/` subdirectory
-- **Visual Studio Integration**: The `.vcxproj` file includes all source files for IDE builds
-- **Bilingual Content**: Mix of English and Chinese filenames and comments for learning purposes
-- **Optional Dependencies**: Ctoon library headers are referenced but not required for core functionality
-- **Multi-platform**: While primarily designed for Windows/Visual Studio, can be compiled with g++ on other platforms
-- **Educational Focus**: Code emphasizes clarity and learning over performance optimization
-- **Memory Management**: Explicit memory allocation/deletion with proper destructor patterns
+- C++ file naming: `<id>.<name>.cpp` (some historical files have spaces)
+- Problems are single-file, standalone, executable
+- Shared code in `common/` should not be modified without justification
+- Build artifacts in `build/` are not committed
