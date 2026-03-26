@@ -16,14 +16,14 @@ class Solution
 public:
   string mergeAlternately(string word1, string word2)
   {
-    string res;
-    int i=0,j=0;
-    while(i <word1.size() || j<word2.size()){
+    string res; // 存储合并后的字符串
+    int i=0,j=0; // 分别指向word1和word2的起始位置
+    while(i <word1.size() || j<word2.size()){ // 当word1和word2都没有遍历完时
       if(i<word1.size()){
-        res+=word1[i++];
+        res+=word1[i++]; // 将word1的当前字符添加到res中，并将i向后移动一位
       }
       if(j<word2.size()){
-        res+=word2[j++];
+        res+=word2[j++]; // 将word2的当前字符添加到res中，并将j向后移动一位
       }
 
     }
