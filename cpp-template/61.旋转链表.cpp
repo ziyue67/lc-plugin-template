@@ -110,12 +110,29 @@ public:
         // return newHead;
         // O(1)空间复杂度 O(n)时间复杂度
         // 在选择遍历链表时候 找到倒数第k+1节点 然后在从这个节点设置为头节点(2) 与 从末尾链接到头节点 (1) 然后在断开节点这样就返回了(3)  头节点
+        // if (head == nullptr || k == 0)
+        //     return head;
+        // ListNode *curr = head; // 找到链表尾
+        // int n = 1;              // 至少有一个节点
+        // while (curr->next != nullptr)
+        // { // 找到链表长度
+        //     curr = curr->next;
+        //     n++;
+        // }
+        // curr->next = head; // 1.连接
+        // k = k % n;         // 求链表长度
+        // for (int i = 0; i < n - k; i++)
+        // { // 3.找到倒数第k+1个节点
+        //     curr = curr->next;
+        // }
+        // ListNode *newHead = curr->next; // 4.新头节点
+        // curr->next = nullptr;
+        // return newHead;
         if (head == nullptr || k == 0)
             return head;
         ListNode *curr = head; // 找到链表尾
         int n = 1;              // 至少有一个节点
-        while (curr->next != nullptr)
-        { // 找到链表长度
+        while (curr->next != nullptr){
             curr = curr->next;
             n++;
         }
