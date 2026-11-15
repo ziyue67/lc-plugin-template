@@ -15,31 +15,31 @@
  * Testcase Example:  '"babad"\n"cbbd"'
  *
  * 给你一个字符串 s，找到 s 中最长的 回文 子串。
- * 
- * 
- * 
+ *
+ *
+ *
  * 示例 1：
- * 
+ *
  * 输入：s = "babad"
  * 输出："bab"
  * 解释："aba" 同样是符合题意的答案。
- * 
- * 
+ *
+ *
  * 示例 2：
- * 
+ *
  * 输入：s = "cbbd"
  * 输出："bb"
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  * 提示：
- * 
- * 
+ *
+ *
  * 1 <= s.length <= 1000
  * s 仅由数字和英文字母组成
- * 
- * 
+ *
+ *
  */
 
 #include <iostream>
@@ -51,39 +51,71 @@
 using namespace std;
 
 // @lc code=start
-class Solution {
+class Solution
+{
 public:
-    string longestPalindrome(string s) {
-       int n=s.size();
-       int ans_L=0,ans_R=0;
-       for(int i=0;i<2*n-1;i++){
-        int l=i/2,r=(i+1)/2;
-        while (l>=0 && r<n &&s[l]==s[r])
+    string longestPalindrome(string s)
+    {
+        //    int n=s.size();
+        //    int ans_L=0,ans_R=0;
+        //    for(int i=0;i<2*n-1;i++){
+        //     int l=i/2,r=(i+1)/2;
+        //     while (l>=0 && r<n &&s[l]==s[r])
+        //     {
+        //         l--;
+        //         r++;
+        //     }
+        //     if(r-l-1>ans_R-ans_L){
+        //         ans_L=l+1;
+        //         ans_R=r;
+        //     }
+
+        //    }
+        //    return s.substr(ans_L,ans_R-ans_L);
+        vector<vector<int>> memo(s.size(), vector<int>(s.size(), 0));
+        int maxLen = 0;
+        int left = 0;
+        int right = 0;
+        for (int i = s.size() - 1; i >= 0; i--)
         {
-            l--;
-            r++;
-        }
-        if(r-l-1>ans_R-ans_L){
-            ans_L=l+1;
-            ans_R=r;
-        }
-        
-       } 
-       return s.substr(ans_L,ans_R-ans_L);
+            for (int j = i; j < s.size(); j++)
+            {
+                if (s[i] == s[j])
+                {
+                    if (j - i <= 1)
+                    {
+                        memo[i][j] = true;
+                    }
+                    else if (memo[i + 1][j - 1])
+                    {
+                        memo[i][j] = true;
+                    }
+                }
+                if (memo[i][j] && j - i + 1 > maxLen)
+                {
+                    maxLen = j - i + 1;
+                    left = i;
+                    right = j;
+                }
+            }
+        };
+        return s.substr(left, right - left + 1);
     }
 };
 // @lc code=end
 
-int main() {
+int main()
+{
     Solution solution;
-    vector<pair<string,string>> tests = {
+    vector<pair<string, string>> tests = {
         {"babad", "bab or aba"},
         {"cbbd", "bb"},
         {"a", "a"},
         {"ac", "a or c"},
     };
 
-    for (auto &tc : tests) {
+    for (auto &tc : tests)
+    {
         const string &s = tc.first;
         string out = solution.longestPalindrome(s);
         cout << "input: \"" << s << "\" -> output: \"" << out << "\"; expected: " << tc.second << "\n";
@@ -91,8 +123,6 @@ int main() {
 
     return 0;
 }
-
-
 
 /*
 // @lcpr case=start
