@@ -73,23 +73,30 @@ public:
     int minCostClimbingStairs(vector<int> &cost)
     {
         int n = cost.size();
+        // vector<int> dp(n + 1);
+        vector<int> dp(n + 1, -1);
 
-        vector<int> memo(n + 1, -1);
-        auto dfs = [&](this auto &&dfs, int i) -> int
+        // dp[i]=min(dp[i-1]+cost[i-1],do[i-2]+cost[i-2]);
+        // 如何到dp[i]=dp[i-1]+加上消耗的动作的 csot[i-1];
+        // 如何到dp[i]=dp[i-2]+加上消耗的动作的 csot[i-2];
+
+        // dp[0] = dp[1] = 0;
+        // for (int i = 2; i <= n; i++)
+        // {
+        //     dp[i] = min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+        // }
+        // return dp[n];
+        function<int(int)> dfs = [&](int i) -> int
         {
-            if (i >= n)
-            {
+            if (i < 2)
                 return 0;
-            }
-            int &res = memo[i];
+            int &res = dp[i];
             if (res != -1)
-            {
                 return res;
-            }
-            res = cost[i] + min(dfs(i + 1), dfs(i + 2));
+            res = min(dfs(i - 1) + cost[i - 1], dfs(i - 2) + cost[i - 2]);
             return res;
         };
-        return min(dfs(0), dfs(1));
+        return dfs(n);
     }
 };
 // @lc code=end

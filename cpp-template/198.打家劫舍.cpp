@@ -62,18 +62,23 @@ public:
     int rob(vector<int> &nums)
     {
         int n = nums.size();
-        vector<int> res(n, -1);
+        vector<int> memo(n, -1); //-1是前面也选
         auto dfs = [&](this auto &&dfs, int i) -> int
         {
-            if (i < 0)
+            if (i < 0) // 当它的这个i 本身如果小于0  要么返回0
             {
                 return 0;
             }
-            if (res[i] != -1)
+            int &res = memo[i];
+            if (res != -1)
             {
-                return res[i];
+                return res;
             }
-            return res[i] = max(dfs(i - 1), dfs(i - 2) + nums[i]);
+            // 偷id dp(i-2)+nums[i]
+            // 不偷i dp(i-1)
+            //  dp[i]=max(dfs(i+1),dfs(i+2)+nums[i])
+            res = max(dfs(i - 1), dfs(i - 2) + nums[i]);
+            return res;
         };
         return dfs(n - 1);
     }
