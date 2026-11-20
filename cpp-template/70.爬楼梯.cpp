@@ -76,7 +76,7 @@ public:
         vector<int> memo(n + 1, -1);
         function<int(int)> dfs = [&](int i) -> int
         {
-            if (i < 2)
+            if (i <= 2)
                 return i;
             int &res = memo[i];
             if (res != -1)
@@ -84,7 +84,7 @@ public:
             res = dfs(i - 1) + dfs(i - 2);
             return res;
         };
-        return dfs(n + 2);
+        return dfs(n);
     }
 };
 // @lc code=end
